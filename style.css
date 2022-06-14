@@ -124,3 +124,13 @@ footer {
   margin-bottom: 10px;
   width: 100%;
 }
+
+@media (max-width: 800px) {
+  :root {
+    --spacing-xl: 20px;
+  }
+  form {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
