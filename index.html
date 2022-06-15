@@ -10,88 +10,80 @@
   </head>
   <body>
     <header>
-      <h1>Library app</h1>
-      <div class="add-btn">
-        <button type="button">+</button>
-        <p>Add book</p>
+      <div class="header-container">
+        <div class="header-top">
+          <h1>Library app</h1>
+          <div class="header-add-btn">
+            <button type="button" id="add-btn">+</button>
+            <p id="btn-text">Add book</p>
+          </div>
+        </div>
+        <div class="form-container">
+          <form action="#" method="post" id="form">
+            <div>
+              <label for="title">Title:</label>
+              <input type="text" name="title" id="title" />
+            </div>
+            <div>
+              <label for="author">Author:</label>
+              <input type="text" name="author" id="author" />
+            </div>
+            <div>
+              <label for="pages">Pages:</label>
+              <input type="text" name="pages" id="pages" />
+            </div>
+            <div>
+              <label for="status">Status:</label>
+              <select name="status" id="status">
+                <option value="read">Read</option>
+                <option value="not read">Not read</option>
+              </select>
+            </div>
+            <button type="submit" id="submit-btn">Submit</button>
+          </form>
+        </div>
       </div>
     </header>
     <main>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
+      <div class="book-card">
+        <p>Title: The Lord of the Rings</p>
+        <p>Author: J.R.R. Tolkien</p>
+        <p>Pages: 1000</p>
+
+        <button type="button">Read</button>
+        <button type="button">Remove</button>
       </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
+      <div class="book-card">
+        <p>Title: The Lord of the Rings</p>
+        <p>Author: J.R.R. Tolkien</p>
+        <p>Pages: 1000</p>
+        <p>Status:</p>
+        <button type="button">Read</button>
       </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
+      <div class="book-card">
+        <p>Title: The Lord of the Rings</p>
+        <p>Author: J.R.R. Tolkien</p>
+        <p>Pages: 1000</p>
+        <p>Status:</p>
+        <button type="button">Read</button>
       </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
+      <div class="book-card">
+        <p>Title: The Lord of the Rings</p>
+        <p>Author: J.R.R. Tolkien</p>
+        <p>Pages: 1000</p>
+        <p>Status:</p>
+        <button type="button">Read</button>
       </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorum
-        libero, doloribus commodi, neque repudiandae rerum, voluptatum
-        perspiciatis totam distinctio maxime! Nam odio praesentium voluptatum.
-        In sit quae rem provident!
+      <div class="book-card">
+        <p>Title: The Lord of the Rings</p>
+        <p>Author: J.R.R. Tolkien</p>
+        <p>Pages: 1000</p>
+        <p>Status:</p>
+        <button type="button">Read</button>
       </div>
     </main>
     <footer>
-      <p>Copyright © Veejay</p>
+      <p>Made by VeejayPL</p>
     </footer>
   </body>
 </html>
