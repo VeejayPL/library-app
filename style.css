@@ -12,7 +12,6 @@
   --spacing-xl: 40px;
 }
 
-/* CSS reset */
 *,
 *::before,
 *::after {
@@ -30,11 +29,57 @@ body {
   font-weight: 400;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: var(--darkgreen);
+  margin-bottom: 30px;
 }
+/* ======= Utility ======= */
+.header-add-btn button {
+  border: none;
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 12px;
+  border-radius: 50%;
+  background: var(--darkgreen);
+  color: var(--lightgreen);
+}
+.header-add-btn button:hover {
+  background: var(--lightgreen);
+  color: var(--darkgreen);
+}
+form input {
+  padding: 2px;
+  outline-color: var(--pinkyred);
+}
+form button,
+.book-card button {
+  padding: var(--spacing-xs);
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  background: var(--green);
+  color: var(--lightblue);
+  cursor: pointer;
+}
+/* .book-card button {
+  padding: var(--spacing-xs);
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  background: var(--lightgreen);
+} */
+.book-card button:hover,
+form button:hover {
+  background: var(--black);
+}
+
 /* ======= Header ======= */
 header {
   background: var(--lightgreen);
   box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px;
+  position: sticky;
+  top: 0;
 }
 .header-container {
   display: flex;
@@ -54,34 +99,19 @@ header {
   max-width: 80%;
   margin: 0 auto;
 }
-form {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-sm);
-}
-form input {
-  padding: 2px;
-}
 .header-add-btn {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 22px;
 }
-.header-add-btn button {
-  border: none;
-  font-size: larger;
-  font-weight: bold;
-  text-align: center;
-  padding: 5px 12px;
-  border-radius: 50%;
-  background: var(--darkgreen);
-  color: var(--lightgreen);
-}
-.header-add-btn button:hover {
-  background: var(--lightgreen);
-  color: var(--darkgreen);
+
+/* ======= Form ======= */
+form {
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-sm);
 }
 
 /* ======= Main ======= */
@@ -108,18 +138,6 @@ main {
   display: flex;
   gap: 5px;
 }
-.book-card button {
-  padding: var(--spacing-xs);
-  width: 100%;
-  border-radius: 8px;
-  border: none;
-  font-size: 18px;
-  background: var(--lightgreen);
-}
-.book-card button:hover {
-  background: var(--green);
-  color: var(--lightblue);
-}
 
 /* ======= Footer ======= */
 footer {
@@ -138,5 +156,8 @@ footer {
   form {
     flex-direction: column;
     align-items: flex-end;
+  }
+  form > div:last-of-type {
+    align-self: center;
   }
 }
