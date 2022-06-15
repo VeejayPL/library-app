@@ -61,17 +61,12 @@ form button,
   color: var(--lightblue);
   cursor: pointer;
 }
-/* .book-card button {
-  padding: var(--spacing-xs);
-  width: 100%;
-  border-radius: 8px;
-  border: none;
-  font-size: 18px;
-  background: var(--lightgreen);
-} */
 .book-card button:hover,
 form button:hover {
   background: var(--black);
+}
+form button:active {
+  transform: scale(1.1);
 }
 
 /* ======= Header ======= */
@@ -124,7 +119,7 @@ main {
 
 /* ======= Book card ======= */
 .book-card {
-  background-color: var(--lightblue);
+  background: var(--lightblue);
   box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px;
   border-radius: 8px;
   padding: var(--spacing-sm);
@@ -137,6 +132,9 @@ main {
 .book-card div {
   display: flex;
   gap: 5px;
+}
+.not-read {
+  background: var(--pinkyred);
 }
 
 /* ======= Footer ======= */
