@@ -45,7 +45,7 @@ function displayForm() {
     addButton.style.transform = "rotate(0deg)";
   } else {
     formField.style.display = "flex";
-    addButtonText.innerText = "Close form";
+    addButtonText.innerText = "Close";
     addButton.style.transform = "rotate(45deg)";
   }
 }
