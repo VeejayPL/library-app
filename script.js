@@ -8,33 +8,50 @@ const pagesField = document.querySelector("#pages");
 const statusField = document.querySelector("#status");
 const bookCardDisplay = document.querySelector(".book-card-display");
 
-let myLibrary = [
-  {
-    title: "The Lord of the Rings",
-    author: "J.R.R. Tolkien",
-    pages: "1000",
-    status: "Read",
-  },
-  {
-    title: "The Lord of the Rings",
-    author: "J.R.R. Tolkien",
-    pages: "1000",
-    status: "Read",
-  },
-];
+let myLibrary = [];
 
+// Constructor
 function Book(title, author, pages, status) {
   (this.title = title),
     (this.author = author),
     (this.pages = pages),
     (this.status = status);
 }
+// Prototype
+Book.prototype.toggleStatus = function () {
+  if (this.status == "Read") {
+    this.status = "Not read";
+  } else {
+    this.status = "Read";
+  }
+};
+
 function addBookToLibrary(title, author, pages, read) {
   title = titleField.value;
   author = authorField.value;
   pages = pagesField.value;
   status = statusField.value;
   return myLibrary.push(new Book(title, author, pages, status));
+}
+
+function findBook(title) {
+  return myLibrary.find((book) => book.title === title);
+}
+
+function toggleRead(e) {
+  const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
+  const book = findBook(title);
+  book.toggleStatus();
+  clearBookDisplay();
+  updateBookDisplay();
+}
+
+function removeBook(e) {
+  const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
+  const book = findBook(title);
+  myLibrary.splice(book, 1);
+  clearBookDisplay();
+  updateBookDisplay();
 }
 
 function clearFields() {
@@ -68,6 +85,8 @@ function createBookCard(book) {
   const removeBtn = document.createElement("button");
 
   bookCard.classList.add("book-card");
+  readBtn.addEventListener("click", toggleRead);
+  removeBtn.addEventListener("click", removeBook);
 
   title.textContent = `"${book.title}"`;
   author.textContent = `by ${book.author}`;
@@ -93,9 +112,6 @@ function updateBookDisplay() {
   }
 }
 
-function toggleRead() {
-  const readBtn = document.querySelector;
-}
 // Toggle form
 addButton.addEventListener("click", displayForm);
 
@@ -111,4 +127,4 @@ submitButton.addEventListener("click", () => {
   }
 });
 
-onload(updateBookDisplay());
+updateBookDisplay();
