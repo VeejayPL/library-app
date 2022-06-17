@@ -1,3 +1,4 @@
+// User interface
 const addButton = document.querySelector("#add-btn");
 const addButtonText = document.querySelector("#btn-text");
 const submitButton = document.querySelector("#submit-btn");
@@ -7,6 +8,16 @@ const authorField = document.querySelector("#author");
 const pagesField = document.querySelector("#pages");
 const statusField = document.querySelector("#status");
 const bookCardDisplay = document.querySelector(".book-card-display");
+
+// Modal
+const alertModal = document.querySelector(".modal-container");
+const alertModalText = document.querySelector(".modal-content-text");
+const alertModalButton = document
+  .querySelector(".modal-content-button")
+  .addEventListener("click", () => {
+    alertModal.style.display = "none";
+    displayForm();
+  });
 
 let myLibrary = [];
 
@@ -26,13 +37,29 @@ Book.prototype.toggleStatus = function () {
   }
 };
 
+// Add book to library array and display it
+submitButton.addEventListener("click", () => {
+  if (titleField.value === "" || authorField.value === "") {
+    displayForm();
+    alertModalText.textContent = "Please fill in the fields!";
+    alertModal.style.display = "block";
+  } else {
+    addBookToLibrary();
+    clearFields();
+    clearBookDisplay();
+    updateBookDisplay();
+  }
+});
+
 function addBookToLibrary(title, author, pages, read) {
   title = titleField.value;
   author = authorField.value;
   pages = pagesField.value;
   status = statusField.value;
   if (myLibrary.find((book) => book.title === title)) {
-    return alert("Book is already in library");
+    displayForm();
+    alertModalText.textContent = "This book is already in your library!";
+    alertModal.style.display = "block";
   } else {
     return myLibrary.push(new Book(title, author, pages, status));
   }
@@ -61,20 +88,9 @@ function clearFields() {
   pagesField.value = "";
   statusField.value = "Read";
 }
+
 function clearBookDisplay() {
   bookCardDisplay.innerHTML = "";
-}
-
-function displayForm() {
-  if (formField.style.display === "flex") {
-    formField.style.display = "none";
-    addButtonText.innerText = "Add book";
-    addButton.style.transform = "rotate(0deg)";
-  } else {
-    formField.style.display = "flex";
-    addButtonText.innerText = "Close";
-    addButton.style.transform = "rotate(45deg)";
-  }
 }
 
 function createBookCard(book) {
@@ -119,19 +135,17 @@ function updateBookDisplay() {
   }
 }
 
+function displayForm() {
+  if (formField.style.display === "flex") {
+    formField.style.display = "none";
+    addButtonText.innerText = "Add book";
+    addButton.style.transform = "rotate(0deg)";
+  } else {
+    formField.style.display = "flex";
+    addButtonText.innerText = "Close";
+    addButton.style.transform = "rotate(45deg)";
+  }
+}
+
 // Toggle form
 addButton.addEventListener("click", displayForm);
-
-// Add book to library array and display
-submitButton.addEventListener("click", () => {
-  if (titleField.value === "" || authorField.value === "") {
-    return;
-  } else {
-    addBookToLibrary();
-    clearFields();
-    clearBookDisplay();
-    updateBookDisplay();
-  }
-});
-
-updateBookDisplay();
