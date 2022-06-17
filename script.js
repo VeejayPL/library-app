@@ -31,24 +31,25 @@ function addBookToLibrary(title, author, pages, read) {
   author = authorField.value;
   pages = pagesField.value;
   status = statusField.value;
-  return myLibrary.push(new Book(title, author, pages, status));
+  if (myLibrary.find((book) => book.title === title)) {
+    return alert("Book is already in library");
+  } else {
+    return myLibrary.push(new Book(title, author, pages, status));
+  }
 }
 
-function findBook(title) {
-  return myLibrary.find((book) => book.title === title);
-}
-
-function toggleRead(e) {
+function findBook(e) {
   const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
-  const book = findBook(title);
+  return (book = myLibrary.find((book) => book.title === title));
+}
+
+function toggleRead(book) {
   book.toggleStatus();
   clearBookDisplay();
   updateBookDisplay();
 }
 
-function removeBook(e) {
-  const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
-  const book = findBook(title);
+function removeBook(book) {
   myLibrary.splice(book, 1);
   clearBookDisplay();
   updateBookDisplay();
@@ -85,8 +86,14 @@ function createBookCard(book) {
   const removeBtn = document.createElement("button");
 
   bookCard.classList.add("book-card");
-  readBtn.addEventListener("click", toggleRead);
-  removeBtn.addEventListener("click", removeBook);
+  readBtn.addEventListener("click", (e) => {
+    findBook(e);
+    toggleRead(book);
+  });
+  removeBtn.addEventListener("click", (e) => {
+    findBook(e);
+    removeBook(book);
+  });
 
   title.textContent = `"${book.title}"`;
   author.textContent = `by ${book.author}`;
