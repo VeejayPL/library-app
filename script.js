@@ -65,18 +65,21 @@ function addBookToLibrary(title, author, pages, read) {
   }
 }
 
-function findBook(e) {
-  const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
-  return (book = myLibrary.find((book) => book.title === title));
+function findBook(title) {
+  return myLibrary.find((book) => book.title === title);
 }
 
-function toggleRead(book) {
+function toggleRead(e) {
+  const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
+  const book = findBook(title);
   book.toggleStatus();
   clearBookDisplay();
   updateBookDisplay();
 }
 
-function removeBook(book) {
+function removeBook(e) {
+  const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
+  const book = myLibrary.findIndex((book) => book.title === title);
   myLibrary.splice(book, 1);
   clearBookDisplay();
   updateBookDisplay();
@@ -102,14 +105,8 @@ function createBookCard(book) {
   const removeBtn = document.createElement("button");
 
   bookCard.classList.add("book-card");
-  readBtn.addEventListener("click", (e) => {
-    findBook(e);
-    toggleRead(book);
-  });
-  removeBtn.addEventListener("click", (e) => {
-    findBook(e);
-    removeBook(book);
-  });
+  readBtn.addEventListener("click", toggleRead);
+  removeBtn.addEventListener("click", removeBook);
 
   title.textContent = `"${book.title}"`;
   author.textContent = `by ${book.author}`;
