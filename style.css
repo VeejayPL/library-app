@@ -1,11 +1,11 @@
 :root {
-  --white: #fdfdff;
-  --silver: #edede9;
-  --navyblue: #140675;
-  --navybluelight: #260bd5;
-  --red: #d00000;
-  --lightred: #ff3333;
-  --black: #004040;
+  --primary-background: #fdfdff;
+  --secondary-background: #edede9;
+  --header-button: #466060;
+  --button: #6eb0c4;
+  --button-notread: #d00000;
+  --button-notread-hover: #ff3333;
+  --font: #100b00;
   --spacing-xs: 5px;
   --spacing-sm: 10px;
   --spacing-md: 15px;
@@ -29,9 +29,9 @@ body {
   font-size: 18px;
   font-weight: 400;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background: var(--white);
+  background: var(--primary-background);
   margin-bottom: 30px;
-  color: var(--black);
+  color: var(--font);
 }
 /* ======= Utility ======= */
 .header-add-btn button {
@@ -41,23 +41,24 @@ body {
   text-align: center;
   padding: 5px 12px;
   border-radius: 50%;
-  background: var(--navybluelight);
-  color: var(--white);
+  background: var(--header-button);
+  color: var(--primary-background);
 }
 .header-add-btn button:hover {
-  background: var(--silver);
-  color: var(--navybluelight);
+  background: var(--primary-background);
+  color: var(--header-button);
 }
 form input {
   padding: 2px;
   outline: none;
+  border: 2px solid var(--font);
   border-top: none;
   border-left: none;
   border-radius: 0px 0px 16px 0px;
-  background: var(--silver);
+  background: var(--primary-background);
 }
 form input:focus {
-  border-color: var(--red);
+  border-color: var(--button-notread);
 }
 
 form button,
@@ -68,20 +69,20 @@ form button,
   border-radius: 8px;
   border: none;
   font-size: 18px;
-  background: var(--navybluelight);
-  color: var(--white);
+  background: var(--button);
+  color: var(--primary-background);
   cursor: pointer;
 }
 .book-card button:hover,
 form button:hover,
 .modal-content-button:hover {
-  background: var(--navyblue);
+  background: var(--header-button);
 }
 .book-card button.not-read {
-  background: var(--red);
+  background: var(--button-notread);
 }
 .book-card button.not-read:hover {
-  background: var(--lightred);
+  background: var(--button-notread-hover);
 }
 form button:active {
   transform: scale(1.1);
@@ -89,7 +90,7 @@ form button:active {
 
 /* ======= Header ======= */
 header {
-  background: var(--silver);
+  background: var(--primary-background);
   box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px;
   position: sticky;
   top: 0;
@@ -125,7 +126,7 @@ form {
   display: none;
   align-items: center;
   justify-content: flex-start;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
 }
 
 /* ======= Main ======= */
@@ -138,7 +139,7 @@ main {
 
 /* ======= Book card ======= */
 .book-card {
-  background: var(--silver);
+  background: var(--secondary-background);
   box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px;
   border-radius: 8px;
   padding: var(--spacing-sm);
@@ -147,7 +148,6 @@ main {
   justify-content: space-around;
   align-items: center;
   gap: var(--spacing-md);
-  color: var(--navyblue);
   font-weight: 700;
 }
 
@@ -180,7 +180,7 @@ footer {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content {
-  background: var(--silver);
+  background: var(--secondary-background);
   margin: 15% auto;
   padding: var(--spacing-lg);
   max-width: 300px;
