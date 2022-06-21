@@ -33,6 +33,7 @@ body {
   margin-bottom: 30px;
   color: var(--font);
 }
+
 /* ======= Utility ======= */
 .header-add-btn button {
   border: none;
@@ -43,10 +44,14 @@ body {
   border-radius: 50%;
   background: var(--header-button);
   color: var(--primary-background);
+  transition: all 0.2s ease-out;
 }
 .header-add-btn button:hover {
   background: var(--primary-background);
   color: var(--header-button);
+}
+.header-add-btn p {
+  transition: opacity 0.2s ease-out;
 }
 form input {
   padding: 2px;
@@ -72,6 +77,7 @@ form button,
   background: var(--button);
   color: var(--primary-background);
   cursor: pointer;
+  transition: background 0.4s ease-out;
 }
 .book-card button:hover,
 form button:hover,
@@ -95,6 +101,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 0;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
 }
 .header-container {
   display: flex;
@@ -187,11 +195,21 @@ footer {
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px;
   text-align: center;
+  animation: grow 0.5s forwards;
 }
 .modal-content-text {
   margin-bottom: 10px;
   font-weight: bold;
   word-wrap: break-word;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 800px) {
