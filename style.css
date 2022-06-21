@@ -101,6 +101,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 0;
+  transition: border 2s forwards;
+}
+header.border {
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
 }
@@ -185,7 +188,11 @@ footer {
   height: 100%;
   overflow: auto;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fade-in 300ms forwards;
+}
+.modal-container[close] {
+  animation: fade-out 700ms forwards;
 }
 .modal-content {
   background: var(--secondary-background);
@@ -209,6 +216,22 @@ footer {
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

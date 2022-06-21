@@ -15,8 +15,10 @@ const alertModalText = document.querySelector(".modal-content-text");
 const alertModalButton = document
   .querySelector(".modal-content-button")
   .addEventListener("click", () => {
-    alertModal.style.display = "none";
-    displayForm();
+    alertModal.setAttribute("close", "");
+    window.setTimeout(() => {
+      alertModal.style.display = "none";
+    }, 700);
   });
 
 let myLibrary = [];
@@ -40,9 +42,9 @@ Book.prototype.toggleStatus = function () {
 // Add book to library array and display it
 submitButton.addEventListener("click", () => {
   if (titleField.value === "" || authorField.value === "") {
-    displayForm();
     alertModalText.textContent = "Please fill in the fields!";
     alertModal.style.display = "block";
+    alertModal.removeAttribute("close");
   } else {
     addBookToLibrary();
     clearFields();
@@ -57,7 +59,6 @@ function addBookToLibrary(title, author, pages, read) {
   pages = pagesField.value;
   status = statusField.value;
   if (myLibrary.find((book) => book.title === title)) {
-    displayForm();
     alertModalText.textContent = "This book is already in your library!";
     alertModal.style.display = "block";
   } else {
@@ -135,12 +136,15 @@ function updateBookDisplay() {
 }
 
 function displayForm() {
+  const header = document.querySelector("header");
   if (formField.style.display === "flex") {
     formField.style.display = "none";
+    header.classList.toggle("border");
     addButtonText.style.opacity = "1";
     addButton.style.transform = "rotate(0deg)";
   } else {
     formField.style.display = "flex";
+    header.classList.toggle("border");
     addButtonText.style.opacity = "0";
     addButton.style.transform = "rotate(45deg)";
   }
