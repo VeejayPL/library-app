@@ -18,7 +18,7 @@ const alertModalButton = document
     alertModal.setAttribute("close", "");
     window.setTimeout(() => {
       alertModal.style.display = "none";
-    }, 700);
+    }, 600);
   });
 
 let myLibrary = [];
