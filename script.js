@@ -70,6 +70,7 @@ function findBook(title) {
 }
 
 function toggleRead(e) {
+  e.preventDefault();
   const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
   const book = findBook(title);
   book.toggleStatus();
@@ -78,6 +79,7 @@ function toggleRead(e) {
 }
 
 function removeBook(e) {
+  e.preventDefault();
   const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
   const book = myLibrary.findIndex((book) => book.title === title);
   myLibrary.splice(book, 1);
@@ -122,7 +124,7 @@ function createBookCard(book) {
   bookCardDisplay.appendChild(bookCard);
 
   if (readBtn.textContent === "Not read") {
-    bookCard.classList.add("not-read");
+    readBtn.classList.toggle("not-read");
   }
 }
 
@@ -135,14 +137,43 @@ function updateBookDisplay() {
 function displayForm() {
   if (formField.style.display === "flex") {
     formField.style.display = "none";
-    addButtonText.innerText = "Add book";
+    addButtonText.style.opacity = "1";
     addButton.style.transform = "rotate(0deg)";
   } else {
     formField.style.display = "flex";
-    addButtonText.innerText = "Close";
+    addButtonText.style.opacity = "0";
     addButton.style.transform = "rotate(45deg)";
   }
 }
 
 // Toggle form
 addButton.addEventListener("click", displayForm);
+
+myLibrary.push(new Book("Harry Potter", "J.K. Rowling", "1200", "Read"));
+myLibrary.push(new Book("Lord of the Rings", "J.R.R. Tolkien", "1200", "Read"));
+myLibrary.push(new Book("The Martian", "Andy Weir", "480", "Read"));
+myLibrary.push(
+  new Book("Alice in Wonderland", "Lewis Carroll", "240", "Not read")
+);
+myLibrary.push(new Book("The Silmarillion", "J.R.R. Tolkien", "370", "Read"));
+myLibrary.push(new Book("Dune", "Frank Herbert", "592", "Not read"));
+
+updateBookDisplay();
+
+// Dark and light modes - just for kicks
+function toggleTheme(colors) {
+  const root = document.querySelector(":root");
+  Object.entries(colors).forEach((color) =>
+    root.style.setProperty(color[0], color[1])
+  );
+}
+
+const darkColors = {
+  "--primary-background": "yellow",
+  "--secondary-background": "white",
+  "--header-button": "purple",
+  "--button": "lightblue",
+  "--button-notread": "pink",
+  "--button-notread-hover": "red",
+  "--font": "lime",
+};
