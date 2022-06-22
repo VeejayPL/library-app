@@ -44,7 +44,6 @@ submitButton.addEventListener("click", () => {
   if (titleField.value === "" || authorField.value === "") {
     alertModalText.textContent = "Please fill in the fields!";
     alertModal.style.display = "block";
-    alertModal.removeAttribute("close");
   } else {
     addBookToLibrary();
     clearFields();
