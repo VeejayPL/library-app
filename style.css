@@ -40,11 +40,11 @@ body {
   font-size: larger;
   font-weight: bold;
   text-align: center;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 50%;
   background: var(--header-button);
   color: var(--primary-background);
-  transition: all 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 .header-add-btn button:hover {
   background: var(--primary-background);
