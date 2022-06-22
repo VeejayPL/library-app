@@ -18,6 +18,7 @@ const alertModalButton = document
     alertModal.setAttribute("close", "");
     window.setTimeout(() => {
       alertModal.style.display = "none";
+      alertModal.removeAttribute("close");
     }, 600);
   });
 
