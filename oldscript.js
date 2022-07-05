@@ -163,3 +163,21 @@ myLibrary.push(new Book("The Silmarillion", "J.R.R. Tolkien", "370", "Read"));
 myLibrary.push(new Book("Dune", "Frank Herbert", "592", "Not read"));
 
 updateBookDisplay();
+
+// Dark and light modes - just for kicks
+function toggleTheme(colors) {
+  const root = document.querySelector(":root");
+  Object.entries(colors).forEach((color) =>
+    root.style.setProperty(color[0], color[1])
+  );
+}
+
+const darkColors = {
+  "--primary-background": "yellow",
+  "--secondary-background": "white",
+  "--header-button": "purple",
+  "--button": "lightblue",
+  "--button-notread": "pink",
+  "--button-notread-hover": "red",
+  "--font": "lime",
+};
