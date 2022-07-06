@@ -1,3 +1,40 @@
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
+  toggleStatus() {
+    if (this.status == "Read") {
+      this.status = "Not read";
+    } else {
+      this.status = "Read";
+    }
+  }
+}
+
+class Library {
+  constructor() {
+    this.books = [];
+  }
+  addBook(newBook) {
+    if (!this.isInLibrary(newBook)) {
+      this.books.push(newBook);
+    }
+  }
+  findBook(title) {
+    return this.books.find((book) => book.title === title);
+  }
+  isInLibrary(newBook) {
+    return this.books.some((book) => book.title === newBook.title);
+  }
+  removeBook(title) {
+    return (this.books = this.books.filter((book) => book.title !== title));
+  }
+}
+const myLibrary = new Library();
+
 // User interface
 const addButton = document.querySelector("#add-btn");
 const addButtonText = document.querySelector("#btn-text");
@@ -22,24 +59,6 @@ const alertModalButton = document
     }, 600);
   });
 
-let myLibrary = [];
-
-// Constructor
-function Book(title, author, pages, status) {
-  (this.title = title),
-    (this.author = author),
-    (this.pages = pages),
-    (this.status = status);
-}
-// Prototype
-Book.prototype.toggleStatus = function () {
-  if (this.status == "Read") {
-    this.status = "Not read";
-  } else {
-    this.status = "Read";
-  }
-};
-
 // Add book to library array and display it
 submitButton.addEventListener("click", () => {
   if (titleField.value === "" || authorField.value === "") {
@@ -53,27 +72,26 @@ submitButton.addEventListener("click", () => {
   }
 });
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(title, author, pages, status) {
   title = titleField.value;
   author = authorField.value;
   pages = pagesField.value;
   status = statusField.value;
-  if (myLibrary.find((book) => book.title === title)) {
+
+  const newBook = new Book(title, author, pages, status);
+
+  if (myLibrary.isInLibrary(newBook)) {
     alertModalText.textContent = "This book is already in your library!";
     alertModal.style.display = "block";
   } else {
-    return myLibrary.push(new Book(title, author, pages, status));
+    return myLibrary.addBook(newBook);
   }
-}
-
-function findBook(title) {
-  return myLibrary.find((book) => book.title === title);
 }
 
 function toggleRead(e) {
   e.preventDefault();
   const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
-  const book = findBook(title);
+  const book = myLibrary.findBook(title);
   book.toggleStatus();
   clearBookDisplay();
   updateBookDisplay();
@@ -82,8 +100,7 @@ function toggleRead(e) {
 function removeBook(e) {
   e.preventDefault();
   const title = e.target.parentNode.firstChild.textContent.replaceAll('"', "");
-  const book = myLibrary.findIndex((book) => book.title === title);
-  myLibrary.splice(book, 1);
+  myLibrary.removeBook(title);
   clearBookDisplay();
   updateBookDisplay();
 }
@@ -130,8 +147,8 @@ function createBookCard(book) {
 }
 
 function updateBookDisplay() {
-  for (i in myLibrary) {
-    createBookCard(myLibrary[i]);
+  for (let book of myLibrary.books) {
+    createBookCard(book);
   }
 }
 
@@ -153,13 +170,17 @@ function displayForm() {
 // Toggle form
 addButton.addEventListener("click", displayForm);
 
-myLibrary.push(new Book("Harry Potter", "J.K. Rowling", "1200", "Read"));
-myLibrary.push(new Book("Lord of the Rings", "J.R.R. Tolkien", "1200", "Read"));
-myLibrary.push(new Book("The Martian", "Andy Weir", "480", "Read"));
-myLibrary.push(
+myLibrary.addBook(new Book("Harry Potter", "J.K. Rowling", "1200", "Read"));
+myLibrary.addBook(
+  new Book("Lord of the Rings", "J.R.R. Tolkien", "1200", "Read")
+);
+myLibrary.addBook(new Book("The Martian", "Andy Weir", "480", "Read"));
+myLibrary.addBook(
   new Book("Alice in Wonderland", "Lewis Carroll", "240", "Not read")
 );
-myLibrary.push(new Book("The Silmarillion", "J.R.R. Tolkien", "370", "Read"));
-myLibrary.push(new Book("Dune", "Frank Herbert", "592", "Not read"));
+myLibrary.addBook(
+  new Book("The Silmarillion", "J.R.R. Tolkien", "370", "Read")
+);
+myLibrary.addBook(new Book("Dune", "Frank Herbert", "592", "Not read"));
 
 updateBookDisplay();
