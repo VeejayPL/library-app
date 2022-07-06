@@ -14,3 +14,7 @@ You can take a look at [live demo](https://veejaypl.github.io/library-app/) or a
 - book objects should be displayed
 - user should be able to add / remove / mark "Read" or "Not read"
 - function toggle "Read" / "Not read" should be on Object prototype instance
+
+### Update
+
+- refactored code: replace Object constructor with Class
